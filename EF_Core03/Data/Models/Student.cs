@@ -12,7 +12,7 @@ namespace EF_Core03.Data.Models
         public int Id { get; set; }
         public string FName { get; set; }
         public string LName { get; set; }
-        public string? Address { get; set; }
+        public string Address { get; set; }
         [Range(18,60)]
         public int Age { get; set; }
         public ICollection<StudentCourse> StudentCourses { get; set; } = new List<StudentCourse>();

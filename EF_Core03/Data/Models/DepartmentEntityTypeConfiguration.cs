@@ -16,7 +16,7 @@ namespace EF_Core03.Data.Models
             builder.Property(D => D.Name).HasColumnType("nvarchar(100)").IsRequired();
             builder.HasIndex(D=> D.Name).IsUnique();
             builder.Property(D=>D.HiringDate).IsRequired();
-            builder.HasOne(D=>D.Manger).WithOne(I=>I.MangeDepartment).HasForeignKey<Department>(D=>D.MangerId);
+            builder.HasOne(D=>D.Manager).WithOne(I=>I.ManageDepartment).HasForeignKey<Department>(D=>D.MangerId);
 
         }
     }

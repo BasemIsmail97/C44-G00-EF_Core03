@@ -32,7 +32,7 @@ namespace EF_Core03.Data.Models
             new DepartmentEntityTypeConfiguration().Configure(modelBuilder.Entity<Department>());
             #endregion
 
-            #region Cours Class Configuration
+            #region Course Class Configuration
             modelBuilder.Entity<Course>().ToTable("Courses", C => C.HasCheckConstraint("CK_Course_Duration", "[Duration]>0"));
             new CourseEntityTypeConfiguration().Configure(modelBuilder.Entity<Course>());
             #endregion
@@ -51,16 +51,16 @@ namespace EF_Core03.Data.Models
 
             #endregion
 
-            #region Stud_Course Class Configuration
+            #region StudentCourse Class Configuration
             modelBuilder.Entity<StudentCourse>().ToTable("Stud_Courses");
             new StudentCourseEntityTypeConfiguration().Configure(modelBuilder.Entity<StudentCourse>());
             #endregion
 
 
-            #region Course_Inst Class Configuration
+            #region CourseIstructor Class Configuration
 
-            modelBuilder.Entity<Course_Instructor>().ToTable("Course_Instructors");
-            new Course_IstructorEntityTypeConfiguration().Configure(modelBuilder.Entity<Course_Instructor>());
+            modelBuilder.Entity<CourseInstructor>().ToTable("Course_Instructors");
+            new CourseInstructorEntityTypeConfiguration().Configure(modelBuilder.Entity<CourseInstructor>());
             #endregion
 
 

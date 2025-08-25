@@ -12,10 +12,10 @@ namespace EF_Core03.Data.Models
         public string Name { get; set; }
         public decimal Salary { get; set; }
         public string? Address { get; set; }
-        public decimal HourRateBouns {  get; set; }
-        public ICollection<Course_Instructor> course_Instructors { get; set; } = new List<Course_Instructor>();
+        public decimal HourRateBonus {  get; set; }
+        public ICollection<CourseInstructor> course_Instructors { get; set; } = new List<CourseInstructor>();
        
-        public Department? MangeDepartment { get; set; }
+        public Department? ManageDepartment { get; set; }
         public int DepartmentId { get; set; }
 
         public Department Department { get; set; }

@@ -15,9 +15,9 @@ namespace EF_Core03.Data.Models
             builder.HasKey(x => x.Id);
             builder.Property(x => x.FName).HasColumnType("nvarchar(50)").IsRequired();
             builder.Property(x => x.LName).HasColumnType("nvarchar(50)").IsRequired();
-            builder.Property(x => x.Address).HasColumnType("nvarchar(150)");
+            builder.Property(x => x.Address).HasColumnType("nvarchar(150)").IsRequired(false);
             builder.Property(x => x.Age).IsRequired();
-            builder.HasOne(s => s.Department).WithMany(d => d.Dept_Students).HasForeignKey(s => s.DepartmentId);
+            builder.HasOne(s => s.Department).WithMany(d => d.DepartmentStudents).HasForeignKey(s => s.DepartmentId);
             builder.Property(s => s.DepartmentId).IsRequired();
 
         }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace EF_Core03.Data.Models
 {
-    public class Course_IstructorEntityTypeConfiguration : IEntityTypeConfiguration<Course_Instructor>
+    public class CourseInstructorEntityTypeConfiguration : IEntityTypeConfiguration<CourseInstructor>
     {
-        public void Configure(EntityTypeBuilder<Course_Instructor> builder)
+        public void Configure(EntityTypeBuilder<CourseInstructor> builder)
         {
             builder.HasKey(ci => new { ci.CourseId, ci.InstructorId });
             builder.Property(ci => ci.CourseId).IsRequired();

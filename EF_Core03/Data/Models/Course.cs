@@ -14,7 +14,7 @@ namespace EF_Core03.Data.Models
         public string Name { get; set; }
         public string? Description { get; set; }
         public ICollection<StudentCourse> StudentCourses { get; set; } = new List<StudentCourse>();
-        public ICollection<Course_Instructor> course_Instructors { get; set; } = new List<Course_Instructor>();
+        public ICollection<CourseInstructor> course_Instructors { get; set; } = new List<CourseInstructor>();
         public int TopicId { get; set; }
         public Topic Topic { get; set; }
     }
