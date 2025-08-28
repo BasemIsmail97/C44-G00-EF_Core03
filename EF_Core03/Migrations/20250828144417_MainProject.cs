@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EF_Core03.Migrations
 {
     /// <inheritdoc />
-    public partial class Main_Project : Migration
+    public partial class MainProject : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -48,7 +48,7 @@ namespace EF_Core03.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Course_Instructors",
+                name: "CourseInstructors",
                 columns: table => new
                 {
                     CourseId = table.Column<int>(type: "int", nullable: false),
@@ -57,9 +57,9 @@ namespace EF_Core03.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Course_Instructors", x => new { x.CourseId, x.InstructorId });
+                    table.PrimaryKey("PK_CourseInstructors", x => new { x.CourseId, x.InstructorId });
                     table.ForeignKey(
-                        name: "FK_Course_Instructors_Courses_CourseId",
+                        name: "FK_CourseInstructors_Courses_CourseId",
                         column: x => x.CourseId,
                         principalTable: "Courses",
                         principalColumn: "Id",
@@ -91,13 +91,13 @@ namespace EF_Core03.Migrations
                     Name = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     Salary = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(150)", nullable: true),
-                    HourRateBouns = table.Column<decimal>(type: "decimal(10,2)", nullable: false, defaultValue: 0m),
+                    HourRateBonus = table.Column<decimal>(type: "decimal(10,2)", nullable: false, defaultValue: 0m),
                     DepartmentId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Instructors", x => x.Id);
-                    table.CheckConstraint("CK_Istructor_HourRateBounsAndSalary", "[HourRateBouns]>=0 AND [Salary]>0");
+                    table.CheckConstraint("CK_Istructor_HourRateBounsAndSalary", "[HourRateBonus]>=0 AND [Salary]>0");
                     table.ForeignKey(
                         name: "FK_Instructors_Departments_DepartmentId",
                         column: x => x.DepartmentId,
@@ -130,7 +130,7 @@ namespace EF_Core03.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Stud_Courses",
+                name: "StudentCourses",
                 columns: table => new
                 {
                     StudentId = table.Column<int>(type: "int", nullable: false),
@@ -139,15 +139,15 @@ namespace EF_Core03.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Stud_Courses", x => new { x.StudentId, x.CourseId });
+                    table.PrimaryKey("PK_StudentCourses", x => new { x.StudentId, x.CourseId });
                     table.ForeignKey(
-                        name: "FK_Stud_Courses_Courses_CourseId",
+                        name: "FK_StudentCourses_Courses_CourseId",
                         column: x => x.CourseId,
                         principalTable: "Courses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Stud_Courses_Students_StudentId",
+                        name: "FK_StudentCourses_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
                         principalColumn: "Id",
@@ -155,8 +155,8 @@ namespace EF_Core03.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Course_Instructors_InstructorId",
-                table: "Course_Instructors",
+                name: "IX_CourseInstructors_InstructorId",
+                table: "CourseInstructors",
                 column: "InstructorId");
 
             migrationBuilder.CreateIndex(
@@ -189,8 +189,8 @@ namespace EF_Core03.Migrations
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Stud_Courses_CourseId",
-                table: "Stud_Courses",
+                name: "IX_StudentCourses_CourseId",
+                table: "StudentCourses",
                 column: "CourseId");
 
             migrationBuilder.CreateIndex(
@@ -205,8 +205,8 @@ namespace EF_Core03.Migrations
                 unique: true);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Course_Instructors_Instructors_InstructorId",
-                table: "Course_Instructors",
+                name: "FK_CourseInstructors_Instructors_InstructorId",
+                table: "CourseInstructors",
                 column: "InstructorId",
                 principalTable: "Instructors",
                 principalColumn: "Id",
@@ -228,10 +228,10 @@ namespace EF_Core03.Migrations
                 table: "Departments");
 
             migrationBuilder.DropTable(
-                name: "Course_Instructors");
+                name: "CourseInstructors");
 
             migrationBuilder.DropTable(
-                name: "Stud_Courses");
+                name: "StudentCourses");
 
             migrationBuilder.DropTable(
                 name: "Courses");

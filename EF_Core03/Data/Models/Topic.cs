@@ -10,6 +10,6 @@ namespace EF_Core03.Data.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Course> Courses { get; set; } = new List<Course>();
+        public virtual ICollection<Course> Courses { get; set; } = new List<Course>();
     }
 }

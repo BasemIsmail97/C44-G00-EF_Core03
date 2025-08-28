@@ -13,11 +13,11 @@ namespace EF_Core03.Data.Models
         public decimal Salary { get; set; }
         public string? Address { get; set; }
         public decimal HourRateBonus {  get; set; }
-        public ICollection<CourseInstructor> course_Instructors { get; set; } = new List<CourseInstructor>();
+        public  virtual ICollection<CourseInstructor> course_Instructors { get; set; } = new List<CourseInstructor>();
        
-        public Department? ManageDepartment { get; set; }
+        public virtual Department? ManageDepartment { get; set; }
         public int DepartmentId { get; set; }
 
-        public Department Department { get; set; }
+        public virtual Department Department { get; set; }
     }
 }

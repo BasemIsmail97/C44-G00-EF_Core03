@@ -12,13 +12,13 @@ namespace EF_Core03.Data.Models
         
         public string Name { get; set; }
         
-        public DateOnly HiringDate { get; set; }
-        public ICollection<Student>? DepartmentStudents { get; set; } = new List<Student>();
+        public virtual DateOnly HiringDate { get; set; }
+        public virtual ICollection<Student>? DepartmentStudents { get; set; } = new List<Student>();
 
         public int? MangerId { get; set; }
 
-        public Instructor Manager { get; set; }
-        public ICollection<Instructor> instructors { get; set; } =new List<Instructor>();
+        public virtual Instructor Manager { get; set; }
+        public virtual ICollection<Instructor> instructors { get; set; } =new List<Instructor>();
 
     }
 }

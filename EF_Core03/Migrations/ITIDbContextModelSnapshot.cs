@@ -56,7 +56,7 @@ namespace EF_Core03.Migrations
                         });
                 });
 
-            modelBuilder.Entity("EF_Core03.Data.Models.Course_Instructor", b =>
+            modelBuilder.Entity("EF_Core03.Data.Models.CourseInstructor", b =>
                 {
                     b.Property<int>("CourseId")
                         .HasColumnType("int");
@@ -71,7 +71,7 @@ namespace EF_Core03.Migrations
 
                     b.HasIndex("InstructorId");
 
-                    b.ToTable("Course_Instructors", (string)null);
+                    b.ToTable("CourseInstructors", (string)null);
                 });
 
             modelBuilder.Entity("EF_Core03.Data.Models.Department", b =>
@@ -121,7 +121,7 @@ namespace EF_Core03.Migrations
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("HourRateBouns")
+                    b.Property<decimal>("HourRateBonus")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("decimal(10,2)")
                         .HasDefaultValue(0m);
@@ -139,7 +139,7 @@ namespace EF_Core03.Migrations
 
                     b.ToTable("Instructors", null, t =>
                         {
-                            t.HasCheckConstraint("CK_Istructor_HourRateBounsAndSalary", "[HourRateBouns]>=0 AND [Salary]>0");
+                            t.HasCheckConstraint("CK_Istructor_HourRateBounsAndSalary", "[HourRateBonus]>=0 AND [Salary]>0");
                         });
                 });
 
@@ -190,7 +190,7 @@ namespace EF_Core03.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Stud_Courses", (string)null);
+                    b.ToTable("StudentCourses", (string)null);
                 });
 
             modelBuilder.Entity("EF_Core03.Data.Models.Topic", b =>
@@ -224,7 +224,7 @@ namespace EF_Core03.Migrations
                     b.Navigation("Topic");
                 });
 
-            modelBuilder.Entity("EF_Core03.Data.Models.Course_Instructor", b =>
+            modelBuilder.Entity("EF_Core03.Data.Models.CourseInstructor", b =>
                 {
                     b.HasOne("EF_Core03.Data.Models.Course", "Course")
                         .WithMany("course_Instructors")
@@ -245,11 +245,11 @@ namespace EF_Core03.Migrations
 
             modelBuilder.Entity("EF_Core03.Data.Models.Department", b =>
                 {
-                    b.HasOne("EF_Core03.Data.Models.Instructor", "Manger")
-                        .WithOne("MangeDepartment")
+                    b.HasOne("EF_Core03.Data.Models.Instructor", "Manager")
+                        .WithOne("ManageDepartment")
                         .HasForeignKey("EF_Core03.Data.Models.Department", "MangerId");
 
-                    b.Navigation("Manger");
+                    b.Navigation("Manager");
                 });
 
             modelBuilder.Entity("EF_Core03.Data.Models.Instructor", b =>
@@ -266,7 +266,7 @@ namespace EF_Core03.Migrations
             modelBuilder.Entity("EF_Core03.Data.Models.Student", b =>
                 {
                     b.HasOne("EF_Core03.Data.Models.Department", "Department")
-                        .WithMany("Dept_Students")
+                        .WithMany("DepartmentStudents")
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -302,14 +302,14 @@ namespace EF_Core03.Migrations
 
             modelBuilder.Entity("EF_Core03.Data.Models.Department", b =>
                 {
-                    b.Navigation("Dept_Students");
+                    b.Navigation("DepartmentStudents");
 
                     b.Navigation("instructors");
                 });
 
             modelBuilder.Entity("EF_Core03.Data.Models.Instructor", b =>
                 {
-                    b.Navigation("MangeDepartment");
+                    b.Navigation("ManageDepartment");
 
                     b.Navigation("course_Instructors");
                 });

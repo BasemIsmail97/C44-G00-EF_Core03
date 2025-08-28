@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EF_Core03.Configurations;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,13 @@ namespace EF_Core03.Data.Models
     public class ITIDbContext : Microsoft.EntityFrameworkCore.DbContext
 
     {
-      
+       
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=.;Database=ITIDb;Trusted_connection=true;Trustservercertificate=true");
-           
+            optionsBuilder.UseLazyLoadingProxies();
+
         }
 
 
@@ -38,7 +40,7 @@ namespace EF_Core03.Data.Models
             #endregion
 
             #region Instructor Class Configuration 
-            modelBuilder.Entity<Instructor>().ToTable("Instructors", I => I.HasCheckConstraint("CK_Istructor_HourRateBounsAndSalary", "[HourRateBouns]>=0 AND [Salary]>0"));
+            modelBuilder.Entity<Instructor>().ToTable("Instructors", I => I.HasCheckConstraint("CK_Istructor_HourRateBounsAndSalary", "[HourRateBonus]>=0 AND [Salary]>0"));
            
             new InstructorEntityTypeConfiguration().Configure(modelBuilder.Entity<Instructor>());
 
@@ -52,18 +54,25 @@ namespace EF_Core03.Data.Models
             #endregion
 
             #region StudentCourse Class Configuration
-            modelBuilder.Entity<StudentCourse>().ToTable("Stud_Courses");
+            modelBuilder.Entity<StudentCourse>().ToTable("StudentCourses");
             new StudentCourseEntityTypeConfiguration().Configure(modelBuilder.Entity<StudentCourse>());
             #endregion
 
 
             #region CourseIstructor Class Configuration
 
-            modelBuilder.Entity<CourseInstructor>().ToTable("Course_Instructors");
+            modelBuilder.Entity<CourseInstructor>().ToTable("CourseInstructors");
             new CourseInstructorEntityTypeConfiguration().Configure(modelBuilder.Entity<CourseInstructor>());
             #endregion
 
 
         }
+        public DbSet<Department> Departments { get; set; }  
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
+        public DbSet<Topic> Topics { get; set; }
+        public DbSet<StudentCourse> StudentCourses { get; set; }
+        public DbSet<CourseInstructor> CourseInstructors { get; set; }
     }
 }

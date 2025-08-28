@@ -15,9 +15,9 @@ namespace EF_Core03.Data.Models
         public string Address { get; set; }
         [Range(18,60)]
         public int Age { get; set; }
-        public ICollection<StudentCourse> StudentCourses { get; set; } = new List<StudentCourse>();
+        public virtual ICollection<StudentCourse> StudentCourses { get; set; } = new List<StudentCourse>();
         public int DepartmentId { get; set; }
-        public Department Department { get; set; }
+        public virtual Department Department { get; set; }
       
 
         }
